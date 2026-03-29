@@ -1,0 +1,5 @@
+{
+  "name": "QRTech",
+  "description": "High-end, modern, and professional business website for QRTech, a company specializing in Fire Safety and Electrical Equipment.",
+  "requestFramePermissions": ["geolocation"]
+}
