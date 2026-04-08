@@ -28,16 +28,16 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gray-900">
+      <section className="relative min-h-[60vh] sm:min-h-[80vh] flex items-center overflow-hidden bg-gray-900">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <motion.img 
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.6 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            src="https://images.unsplash.com/photo-1615461066841-6116ecaabb04?auto=format&fit=crop&q=80&w=1920" 
-            alt="Fire Extinguisher Background" 
-            className="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/d/1zU24xZLcte5ASMxs_4_y82lkdq66oUgo" 
+            alt="Fire Safety Equipment" 
+            className="w-full h-full object-contain p-12"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
@@ -162,17 +162,19 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {products.slice(0, 3).map(product => (
               <div key={product.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                <div className="h-64 overflow-hidden relative">
-                  <img src={product.imageUrl} alt={product.name[language]} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" referrerPolicy="no-referrer" />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary uppercase tracking-wider shadow-sm">
-                    {product.category === 'fire' ? (language === 'en' ? 'Fire Safety' : '소방 안전 용품') : 
-                     product.category === 'electrical' ? (language === 'en' ? 'Electrical' : '전기 안전 용품') : 
-                     (language === 'en' ? 'Others' : '기타')}
-                  </div>
+                <div className="aspect-video sm:h-64 overflow-hidden relative bg-white flex items-center justify-center p-4">
+                  <img src={product.imageUrl} alt={product.name[language]} className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105" referrerPolicy="no-referrer" />
                 </div>
-                <div className="p-6">
+                <div className="p-6 text-center">
+                  <div className="mb-3 flex justify-center">
+                    <span className="inline-block bg-blue-50 text-primary text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider border border-blue-100">
+                      {product.category === 'fire' ? (language === 'en' ? 'Fire Safety' : '소방 안전 용품') : 
+                       product.category === 'electrical' ? (language === 'en' ? 'Electrical' : '전기 안전 용품') : 
+                       (language === 'en' ? 'Others' : '기타')}
+                    </span>
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name[language]}</h3>
-                  <p className="text-gray-600 line-clamp-2">{product.description[language]}</p>
+                  <p className="text-gray-600 line-clamp-2 mx-auto">{product.description[language]}</p>
                 </div>
               </div>
             ))}

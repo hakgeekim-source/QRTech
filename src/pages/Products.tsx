@@ -34,44 +34,44 @@ export default function Products() {
 
         {/* Filters and Search */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-          <div className="flex items-center gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
-            <span className="text-gray-500 font-medium flex items-center gap-2 whitespace-nowrap">
-              <Filter className="w-5 h-5" />
-              {language === 'en' ? 'Filter by:' : '필터:'}
+          <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
+            <span className="text-gray-900 font-bold flex items-center gap-2 whitespace-nowrap mr-2">
+              <Filter className="w-5 h-5 text-primary" />
+              {language === 'en' ? 'Filter by:' : '카테고리:'}
             </span>
             <button
               onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
-                filter === 'all' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 ${
+                filter === 'all' ? 'bg-primary border-primary text-white shadow-md' : 'bg-white border-gray-200 text-gray-600 hover:border-primary hover:text-primary'
               }`}
-              style={filter === 'all' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'all' ? { backgroundColor: settings.primaryColor, borderColor: settings.primaryColor } : {}}
             >
               {language === 'en' ? 'All Products' : '모든 제품'}
             </button>
             <button
               onClick={() => setFilter('fire')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
-                filter === 'fire' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 ${
+                filter === 'fire' ? 'bg-primary border-primary text-white shadow-md' : 'bg-white border-gray-200 text-gray-600 hover:border-primary hover:text-primary'
               }`}
-              style={filter === 'fire' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'fire' ? { backgroundColor: settings.primaryColor, borderColor: settings.primaryColor } : {}}
             >
               {language === 'en' ? 'Fire Safety' : '소방 안전 용품'}
             </button>
             <button
               onClick={() => setFilter('electrical')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
-                filter === 'electrical' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 ${
+                filter === 'electrical' ? 'bg-primary border-primary text-white shadow-md' : 'bg-white border-gray-200 text-gray-600 hover:border-primary hover:text-primary'
               }`}
-              style={filter === 'electrical' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'electrical' ? { backgroundColor: settings.primaryColor, borderColor: settings.primaryColor } : {}}
             >
               {language === 'en' ? 'Electrical' : '전기 안전 용품'}
             </button>
             <button
               onClick={() => setFilter('others')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
-                filter === 'others' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 ${
+                filter === 'others' ? 'bg-primary border-primary text-white shadow-md' : 'bg-white border-gray-200 text-gray-600 hover:border-primary hover:text-primary'
               }`}
-              style={filter === 'others' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'others' ? { backgroundColor: settings.primaryColor, borderColor: settings.primaryColor } : {}}
             >
               {language === 'en' ? 'Others' : '기타'}
             </button>
@@ -96,22 +96,24 @@ export default function Products() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredProducts.map(product => (
               <div key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
-                <div className="h-64 overflow-hidden relative bg-gray-100">
+                <div className="aspect-video sm:h-64 overflow-hidden relative bg-white flex items-center justify-center p-4">
                   <img 
                     src={product.imageUrl} 
                     alt={product.name[language]} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                    className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-110" 
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-primary uppercase tracking-wider shadow-sm">
-                    {product.category === 'fire' ? (language === 'en' ? 'Fire Safety' : '소방 안전 용품') : 
-                     product.category === 'electrical' ? (language === 'en' ? 'Electrical' : '전기 안전 용품') : 
-                     (language === 'en' ? 'Others' : '기타')}
-                  </div>
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center items-center">
+                  <div className="mb-3 flex justify-center">
+                    <span className="inline-block bg-blue-50 text-primary text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider border border-blue-100">
+                      {product.category === 'fire' ? (language === 'en' ? 'Fire Safety' : '소방 안전 용품') : 
+                       product.category === 'electrical' ? (language === 'en' ? 'Electrical' : '전기 안전 용품') : 
+                       (language === 'en' ? 'Others' : '기타')}
+                    </span>
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-1">{product.name[language]}</h3>
-                  <p className="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">{product.description[language]}</p>
+                  <p className="text-gray-600 text-sm mb-6 flex-grow line-clamp-3 mx-auto">{product.description[language]}</p>
                   <Link 
                     to="/contact"
                     className="w-full py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors mt-auto text-center block"
