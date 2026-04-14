@@ -38,8 +38,8 @@ export default function About() {
     <div className="bg-white min-h-screen">
       {/* Hero */}
       <section className="relative bg-gray-900 text-white py-24">
-        <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
-          <img src="https://lh3.googleusercontent.com/d/1zU24xZLcte5ASMxs_4_y82lkdq66oUgo" alt="About QRTech" className="w-full h-full object-contain opacity-30 p-12" referrerPolicy="no-referrer" />
+        <div className="absolute inset-0 overflow-hidden">
+          <img src="https://picsum.photos/seed/abouthero/1920/1080" alt="About QRTech" className="w-full h-full object-cover opacity-30" referrerPolicy="no-referrer" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -75,8 +75,8 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="relative flex justify-center">
-              <img src="https://picsum.photos/seed/office/800/600" alt="Office" className="rounded-2xl shadow-2xl mx-auto" referrerPolicy="no-referrer" />
+            <div className="relative">
+              <img src="https://picsum.photos/seed/office/800/600" alt="Office" className="rounded-2xl shadow-2xl" referrerPolicy="no-referrer" />
               <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-xl shadow-xl hidden md:block border border-gray-100">
                 <div className="text-4xl font-bold text-primary mb-2" style={{ color: settings.primaryColor }}>25+</div>
                 <div className="text-gray-600 font-medium">

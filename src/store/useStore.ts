@@ -48,21 +48,21 @@ const initialProducts: Product[] = [
     name: { en: 'Smart Fire Extinguisher', ko: '배터리화재용 소화기' },
     description: { en: 'KFI certified battery fire extinguisher for lithium-ion battery fires.', ko: 'KFI 배터리소화기 리튬이온전지화재 성능인증제품.' },
     category: 'fire',
-    imageUrl: 'https://lh3.googleusercontent.com/d/1zU24xZLcte5ASMxs_4_y82lkdq66oUgo',
+    imageUrl: 'https://lh3.googleusercontent.com/d/1M2xq5XpDUYjRRkhoSHrI4rnfuDSehF6T',
   },
   {
     id: '2',
     name: { en: 'Industrial Circuit Breaker', ko: '저압기기용 회로 차단기' },
     description: { en: 'High-capacity circuit breaker for industrial low-voltage applications.', ko: '산업용 저압 회로 차단기.' },
     category: 'electrical',
-    imageUrl: 'https://lh3.googleusercontent.com/d/1MJrd97k7R6f_8LfE_6XSHZkT3_AyLoeb',
+    imageUrl: 'https://lh3.googleusercontent.com/d/14I679rFcoTD4zzwfIVbmLHrcguchabzH',
   },  
   {
     id: '3',
     name: { en: 'Smoke Detector Pro', ko: '기타 제품' },
     description: { en: 'Advanced photoelectric smoke detector.', ko: '단자대, 파워서플라이, 케이블 등.' },
     category: 'others',
-    imageUrl: 'https://lh3.googleusercontent.com/d/1zy5CUkFkbaxW6GJkzV6MJqFp-wV8Qip0',
+    imageUrl: 'https://lh3.googleusercontent.com/d/1BwbdUTLJ85oCLS863pSHfiz2-_Pn8S-Q',
   }
 ];
 
@@ -95,7 +95,7 @@ export const useStore = create<AppState>()(
       })),
     }),
     {
-      name: 'qrtech-storage-v27',
+      name: 'qrtech-storage-v24',
     }
   )
 );
