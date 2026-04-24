@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
 
 export default function Footer() {
-  const { language } = useStore();
+  const { language = 'ko' } = useStore();
 
   const navLinks = [
     { path: '/', label: { en: 'Home', ko: '홈' } },
@@ -34,7 +34,7 @@ export default function Footer() {
               {navLinks.map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} className="hover:text-white transition-colors">
-                    {link.label[language]}
+                    {link.label[language] || (link.label as any).ko}
                   </Link>
                 </li>
               ))}

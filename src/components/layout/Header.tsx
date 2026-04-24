@@ -4,7 +4,7 @@ import { Menu, X, Globe } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Header() {
-  const { language, setLanguage } = useStore();
+  const { language = 'ko', setLanguage } = useStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -40,7 +40,7 @@ export default function Header() {
                   location.pathname === link.path ? 'text-primary' : 'text-gray-600'
                 }`}
               >
-                {link.label[language]}
+                {link.label[language] || link.label.ko}
               </Link>
             ))}
             <div className="flex items-center gap-4 border-l pl-4">
@@ -49,7 +49,7 @@ export default function Header() {
                 className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-primary transition-colors"
               >
                 <Globe className="h-4 w-4" />
-                {language === 'en' ? 'KO' : 'EN'}
+                {String(language).toUpperCase()}
               </button>
             </div>
           </nav>
@@ -88,7 +88,7 @@ export default function Header() {
                     : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
                 }`}
               >
-                {link.label[language]}
+                {link.label[language] || link.label.ko}
               </Link>
             ))}
           </div>
