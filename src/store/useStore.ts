@@ -95,7 +95,7 @@ export const useStore = create<AppState>()(
       })),
     }),
     {
-      name: 'qrtech-storage-v24',
+      name: 'qrtech-storage-v25',
     }
   )
 );

@@ -2,7 +2,8 @@ import { useStore } from '../store/useStore';
 import { ShieldCheck, Award, Users, Globe2 } from 'lucide-react';
 
 export default function About() {
-  const { language, settings } = useStore();
+  const { language = 'ko', settings } = useStore();
+  const primaryColor = settings?.primaryColor || '#003366';
 
   const stats = [
     { label: { en: 'Years Experience', ko: '년의 경험' }, value: '25+' },
@@ -13,22 +14,22 @@ export default function About() {
 
   const values = [
     {
-      icon: <ShieldCheck className="w-8 h-8 text-primary" />,
+      icon: <ShieldCheck className="w-8 h-8 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Safety First', ko: '안전 제일' },
       desc: { en: 'Uncompromising commitment to protecting lives and property.', ko: '생명과 재산을 보호하기 위한 타협 없는 헌신.' }
     },
     {
-      icon: <Award className="w-8 h-8 text-primary" />,
+      icon: <Award className="w-8 h-8 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Excellence', ko: '탁월함' },
       desc: { en: 'Delivering the highest quality products and services.', ko: '최고 품질의 제품과 서비스를 제공합니다.' }
     },
     {
-      icon: <Users className="w-8 h-8 text-primary" />,
+      icon: <Users className="w-8 h-8 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Customer Focus', ko: '고객 중심' },
       desc: { en: 'Tailored solutions to meet specific client needs.', ko: '고객의 특정 요구에 맞춘 맞춤형 솔루션.' }
     },
     {
-      icon: <Globe2 className="w-8 h-8 text-primary" />,
+      icon: <Globe2 className="w-8 h-8 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Global Standards', ko: '글로벌 표준' },
       desc: { en: 'Adhering to international safety and quality regulations.', ko: '국제 안전 및 품질 규정을 준수합니다.' }
     }
@@ -61,7 +62,7 @@ export default function About() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 {language === 'en' ? 'Our Story' : '우리의 이야기'}
               </h2>
-              <div className="w-20 h-1 bg-primary mb-8" style={{ backgroundColor: settings.primaryColor }}></div>
+              <div className="w-20 h-1 bg-primary mb-8" style={{ backgroundColor: primaryColor }}></div>
               <div className="space-y-6 text-lg text-gray-600">
                 <p>
                   {language === 'en' 
@@ -78,7 +79,7 @@ export default function About() {
             <div className="relative">
               <img src="https://picsum.photos/seed/office/800/600" alt="Office" className="rounded-2xl shadow-2xl" referrerPolicy="no-referrer" />
               <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-xl shadow-xl hidden md:block border border-gray-100">
-                <div className="text-4xl font-bold text-primary mb-2" style={{ color: settings.primaryColor }}>25+</div>
+                <div className="text-4xl font-bold text-primary mb-2" style={{ color: primaryColor }}>25+</div>
                 <div className="text-gray-600 font-medium">
                   {language === 'en' ? 'Years of Excellence' : '탁월함의 25년'}
                 </div>
@@ -109,7 +110,7 @@ export default function About() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               {language === 'en' ? 'Our Core Values' : '핵심 가치'}
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded" style={{ backgroundColor: settings.primaryColor }}></div>
+            <div className="w-24 h-1 bg-primary mx-auto rounded" style={{ backgroundColor: primaryColor }}></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((val, idx) => (

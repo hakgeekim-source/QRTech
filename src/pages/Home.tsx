@@ -5,7 +5,11 @@ import { motion } from 'motion/react';
 import ContactForm from '../components/ContactForm';
 
 export default function Home() {
-  const { language, settings, products, posts } = useStore();
+  const { language = 'ko', settings, products = [], posts = [] } = useStore();
+
+  const heroTitle = settings?.heroTitle?.[language] || 'Welcome to QRTech';
+  const heroSubtitle = settings?.heroSubtitle?.[language] || 'Your safety is our priority';
+  const primaryColor = settings?.primaryColor || '#003366';
 
   const features = [
     {
@@ -52,15 +56,15 @@ export default function Home() {
             >
               <span 
                 className="inline-block px-4 py-1.5 rounded-full text-sm font-bold tracking-wider uppercase mb-6 text-white border border-white/20 backdrop-blur-sm"
-                style={{ backgroundColor: `${settings.primaryColor}44` }}
+                style={{ backgroundColor: `${primaryColor}44` }}
               >
                 {language === 'en' ? 'Leading Safety Solutions' : '최고의 안전 솔루션'}
               </span>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 leading-[1.1] font-sans whitespace-pre-line">
-                {settings.heroTitle[language]}
+                {heroTitle}
               </h1>
               <p className="text-xl sm:text-2xl text-gray-300 mb-12 leading-relaxed max-w-2xl">
-                {settings.heroSubtitle[language]}
+                {heroSubtitle}
               </p>
               
               <div className="flex flex-wrap gap-5">
@@ -71,7 +75,7 @@ export default function Home() {
                   <Link
                     to="/products"
                     className="inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white bg-primary hover:bg-primary-dark rounded-xl shadow-2xl shadow-primary/20 transition-all duration-300 group"
-                    style={{ backgroundColor: settings.primaryColor }}
+                    style={{ backgroundColor: primaryColor }}
                   >
                     {language === 'en' ? 'Explore Products' : '제품 둘러보기'}
                     <ChevronRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
@@ -109,8 +113,8 @@ export default function Home() {
         >
           <div className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center" style={{ backgroundColor: `${settings.primaryColor}33` }}>
-                <ShieldCheck className="w-6 h-6 text-primary" style={{ color: settings.primaryColor }} />
+              <div className="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center" style={{ backgroundColor: `${primaryColor}33` }}>
+                <ShieldCheck className="w-6 h-6 text-primary" style={{ color: primaryColor }} />
               </div>
               <div>
                 <div className="text-white font-bold text-lg">100% Certified</div>
@@ -128,7 +132,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               {language === 'en' ? 'Why Choose QRTech?' : '왜 QRTech를 선택해야 할까요?'}
             </h2>
-            <div className="w-24 h-1 bg-primary mx-auto rounded" style={{ backgroundColor: settings.primaryColor }}></div>
+            <div className="w-24 h-1 bg-primary mx-auto rounded" style={{ backgroundColor: primaryColor }}></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {features.map((feature, idx) => (
@@ -152,9 +156,9 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 {language === 'en' ? 'Featured Products' : '추천 제품'}
               </h2>
-              <div className="w-24 h-1 bg-primary rounded" style={{ backgroundColor: settings.primaryColor }}></div>
+              <div className="w-24 h-1 bg-primary rounded" style={{ backgroundColor: primaryColor }}></div>
             </div>
-            <Link to="/products" className="text-primary font-medium hover:underline flex items-center" style={{ color: settings.primaryColor }}>
+            <Link to="/products" className="text-primary font-medium hover:underline flex items-center" style={{ color: primaryColor }}>
               {language === 'en' ? 'View All' : '모두 보기'} <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
@@ -188,7 +192,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 font-sans">
                 {language === 'en' ? 'Get in Touch' : '문의하기'}
               </h2>
-              <div className="w-20 h-1 bg-primary mb-8" style={{ backgroundColor: settings.primaryColor }}></div>
+              <div className="w-20 h-1 bg-primary mb-8" style={{ backgroundColor: primaryColor }}></div>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {language === 'en' 
                   ? 'Have questions about our products or need a custom solution? Our experts are ready to assist you.' 
@@ -197,13 +201,13 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4 text-gray-700">
                   <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-5 h-5 text-primary" style={{ color: settings.primaryColor }} />
+                    <Zap className="w-5 h-5 text-primary" style={{ color: primaryColor }} />
                   </div>
                   <span className="font-medium">{language === 'en' ? 'Fast Response' : '빠른 답변'}</span>
                 </div>
                 <div className="flex items-center gap-4 text-gray-700">
                   <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                    <ShieldCheck className="w-5 h-5 text-primary" style={{ color: settings.primaryColor }} />
+                    <ShieldCheck className="w-5 h-5 text-primary" style={{ color: primaryColor }} />
                   </div>
                   <span className="font-medium">{language === 'en' ? 'Expert Support' : '전문가 지원'}</span>
                 </div>
@@ -222,7 +226,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 {language === 'en' ? 'Latest Updates' : '최신 소식'}
               </h2>
-              <div className="w-24 h-1 bg-primary mx-auto rounded" style={{ backgroundColor: settings.primaryColor }}></div>
+              <div className="w-24 h-1 bg-primary mx-auto rounded" style={{ backgroundColor: primaryColor }}></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

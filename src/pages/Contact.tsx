@@ -4,26 +4,27 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 
 export default function Contact() {
-  const { language, settings } = useStore();
+  const { language = 'ko', settings } = useStore();
+  const primaryColor = settings?.primaryColor || '#003366';
 
   const contactInfo = [
     {
-      icon: <MapPin className="w-6 h-6 text-primary" />,
+      icon: <MapPin className="w-6 h-6 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Our Location', ko: '오시는 길' },
       details: { en: '37, Baekjegobun-ro 42-gil, Songpa-gu, Seoul, Republic of Korea', ko: '대한민국 서울특별시 송파구 백제고분로42길 37, 지하1층(송파동)' }
     },
     {
-      icon: <Phone className="w-6 h-6 text-primary" />,
+      icon: <Phone className="w-6 h-6 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Phone Number', ko: '전화번호' },
       details: { en: '+82 10-4668-5357', ko: '+82 10-4668-5357' }
     },
     {
-      icon: <Mail className="w-6 h-6 text-primary" />,
+      icon: <Mail className="w-6 h-6 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Email Address', ko: '이메일 주소' },
       details: { en: 'qrtech@qrtech.kr', ko: 'qrtech@qrtech.kr' }
     },
     {
-      icon: <Clock className="w-6 h-6 text-primary" />,
+      icon: <Clock className="w-6 h-6 text-primary" style={{ color: primaryColor }} />,
       title: { en: 'Working Hours', ko: '업무 시간' },
       details: { en: 'Mon - Fri: 09:00 AM - 06:00 PM\nSat - Sun: Closed', ko: '월 - 금: 오전 09:00 - 오후 06:00\n토 - 일: 휴무' }
     }
@@ -36,7 +37,7 @@ export default function Contact() {
           <h1 className="text-4xl font-extrabold text-gray-900 mb-4 font-sans">
             {language === 'en' ? 'Contact Us' : '문의하기'}
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto rounded mb-8" style={{ backgroundColor: settings.primaryColor }}></div>
+          <div className="w-24 h-1 bg-primary mx-auto rounded mb-8" style={{ backgroundColor: primaryColor }}></div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {language === 'en' 
               ? 'Have questions about our products or services? We are here to help.' 

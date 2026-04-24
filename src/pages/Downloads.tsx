@@ -1,7 +1,8 @@
 import { useStore } from '../store/useStore';
 
 export default function Downloads() {
-  const { language, settings } = useStore();
+  const { language = 'ko', settings } = useStore();
+  const primaryColor = settings?.primaryColor || '#003366';
 
   return (
     <div className="bg-gray-50 min-h-screen py-20">
@@ -10,7 +11,7 @@ export default function Downloads() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 font-sans">
             {language === 'en' ? 'Downloads' : '다운로드'}
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto rounded mb-8" style={{ backgroundColor: settings.primaryColor }}></div>
+          <div className="w-24 h-1 bg-primary mx-auto rounded mb-8" style={{ backgroundColor: primaryColor }}></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {language === 'en' 
               ? 'Technical documentation and resources will be available soon.' 

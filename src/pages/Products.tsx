@@ -4,7 +4,8 @@ import { Filter, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Products() {
-  const { language, products, settings } = useStore();
+  const { language = 'ko', products = [], settings } = useStore();
+  const primaryColor = settings?.primaryColor || '#003366';
   const [filter, setFilter] = useState<'all' | 'fire' | 'electrical' | 'others'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -12,8 +13,8 @@ export default function Products() {
     const matchesFilter = filter === 'all' || product.category === filter;
     const searchLower = searchQuery.toLowerCase();
     const matchesSearch = 
-      product.name[language].toLowerCase().includes(searchLower) ||
-      product.description[language].toLowerCase().includes(searchLower);
+      (product.name[language] || '').toLowerCase().includes(searchLower) ||
+      (product.description[language] || '').toLowerCase().includes(searchLower);
     return matchesFilter && matchesSearch;
   });
 
@@ -24,7 +25,7 @@ export default function Products() {
           <h1 className="text-4xl font-extrabold text-gray-900 mb-4 font-sans">
             {language === 'en' ? 'Our Products' : '제품 소개'}
           </h1>
-          <div className="w-24 h-1 bg-primary mx-auto rounded mb-8" style={{ backgroundColor: settings.primaryColor }}></div>
+          <div className="w-24 h-1 bg-primary mx-auto rounded mb-8" style={{ backgroundColor: primaryColor }}></div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {language === 'en' 
               ? 'Discover our comprehensive range of high-quality fire safety and electrical equipment.' 
@@ -44,7 +45,7 @@ export default function Products() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                 filter === 'all' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
-              style={filter === 'all' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'all' ? { backgroundColor: primaryColor } : {}}
             >
               {language === 'en' ? 'All Products' : '모든 제품'}
             </button>
@@ -53,7 +54,7 @@ export default function Products() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                 filter === 'fire' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
-              style={filter === 'fire' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'fire' ? { backgroundColor: primaryColor } : {}}
             >
               {language === 'en' ? 'Fire Safety' : '소방 안전 용품'}
             </button>
@@ -62,7 +63,7 @@ export default function Products() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                 filter === 'electrical' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
-              style={filter === 'electrical' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'electrical' ? { backgroundColor: primaryColor } : {}}
             >
               {language === 'en' ? 'Electrical' : '전기 안전 용품'}
             </button>
@@ -71,7 +72,7 @@ export default function Products() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
                 filter === 'others' ? 'bg-primary text-white shadow-md' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
-              style={filter === 'others' ? { backgroundColor: settings.primaryColor } : {}}
+              style={filter === 'others' ? { backgroundColor: primaryColor } : {}}
             >
               {language === 'en' ? 'Others' : '기타'}
             </button>
@@ -115,7 +116,7 @@ export default function Products() {
                   <Link 
                     to="/contact"
                     className="w-full py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors mt-auto text-center block"
-                    style={{ backgroundColor: settings.primaryColor }}
+                    style={{ backgroundColor: primaryColor }}
                   >
                     {language === 'en' ? 'Request Quote' : '견적 요청'}
                   </Link>
